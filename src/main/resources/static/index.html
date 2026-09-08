@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodHub - Premium Food Delivery | Zero Delivery Fee</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#fffdf7;color:#1a1a1a}
+.header{display:flex;justify-content:space-between;align-items:center;padding:14px 28px;border-bottom:1px solid #f0e6d2;background:#fff;position:sticky;top:0;z-index:50}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:20px}
+.logo-icon{width:36px;height:36px;background:#111827;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+.nav{display:flex;gap:18px;font-size:13px;font-weight:600}
+.nav span{cursor:pointer;padding:6px 12px;border-radius:20px;background:#f8f5ee}.nav span.active{background:#111827;color:#fff}
+.search{display:flex;gap:8px;align-items:center}.search input{padding:9px 14px;border:1px solid #e8ddd0;border-radius:22px;width:220px;font-size:12px;background:#fdf8f0}
+.search button{padding:9px 16px;background:#111827;color:#fff;border:none;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer}
+.auth button{padding:8px 16px;border-radius:20px;border:1px solid #111827;background:#fff;font-weight:700;font-size:12px;cursor:pointer}.auth .pill{background:#111827;color:#fff;border:none;padding:8px 14px}
+.hero{padding:28px 28px 10px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.hero-left h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:34px;line-height:1.1;font-weight:800}.hero-left h1 span{color:#ff6b00}
+.hero-left p{margin-top:8px;color:#6b7280;font-size:13px;max-width:420px}
+.pills{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}.pills span{padding:8px 16px;border-radius:20px;border:1px solid #e8ddd0;font-size:12px;font-weight:600;cursor:pointer;background:#fff}.pills span.active{background:#111827;color:#fff;border-color:#111827}
+.hero-img{width:320px;height:180px;border-radius:18px;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:12px 28px;background:#fff8ec;border-top:1px solid #f0e6d2;border-bottom:1px solid #f0e6d2;font-size:12px;color:#6b7280}
+.bar strong{color:#111827}.add-btn{background:#16a34a;color:#fff;border:none;padding:9px 16px;border-radius:20px;font-weight:700;font-size:12px;cursor:pointer}
+.wrap{padding:18px 28px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{background:#fff;border:1px solid #f0e6d2;border-radius:16px;overflow:hidden;cursor:pointer;transition:.2s;position:relative}.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.12)}
+.card-img{width:100%;height:170px;object-fit:cover;position:relative}.card-top{position:absolute;top:10px;left:10px;right:10px;display:flex;justify-content:space-between}
+.tag{background:#fff;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:800;letter-spacing:.3px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.price{position:absolute;bottom:10px;left:10px;background:#111827;color:#fff;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:800}
+.del{position:absolute;top:10px;right:10px;background:#ef4444;color:#fff;padding:5px 10px;border-radius:20px;font-size:10px;font-weight:700;cursor:pointer}
+.card-body{padding:12px}.card-body h3{font-size:14px;font-weight:700;line-height:1.3}.meta{font-size:11px;color:#6b7280;margin:4px 0}.desc{font-size:11px;color:#475569;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.5}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;z-index:100;padding:18px}.modal.show{display:flex}
+.box{background:#fff;border-radius:18px;width:100%;max-width:420px;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.25)}.box h2{font-size:18px;font-weight:800;margin-bottom:4px}.box p{font-size:12px;color:#6b7280;margin-bottom:14px}
+.box input,.box select,.box textarea{width:100%;padding:11px 12px;border:1px solid #e5e7eb;border-radius:10px;margin-bottom:10px;font-size:12px}.box textarea{height:70px;resize:none}
+.btn{width:100%;padding:12px;border:none;border-radius:10px;font-weight:700;font-size:13px;cursor:pointer}.btn-black{background:#111827;color:#fff}.btn-white{background:#fff;border:1px solid #e5e7eb;margin-top:8px}
+.detail-box{max-width:780px;width:96vw;background:#fff;border-radius:18px;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.detail-img{width:100%;height:420px;object-fit:cover}.detail-content{padding:18px}.detail-content h3{font-size:20px;font-weight:800}.dmeta{font-size:11px;color:#6b7280;margin:6px 0}.dprice{font-size:22px;font-weight:800;margin:8px 0}.ddesc{font-size:12px;color:#475569;line-height:1.6;margin-top:8px}
+.owner-box{margin-top:14px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px}.owner-box h4{font-size:12px;font-weight:700;margin-bottom:6px}.owner-box div{font-size:11px;color:#475569;line-height:1.5}
+.action-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}.cart-bar{position:fixed;bottom:18px;right:18px;background:#111827;color:#fff;padding:12px 18px;border-radius:30px;font-size:12px;font-weight:700;box-shadow:0 8px 30px rgba(0,0,0,.25);display:none;z-index:60;cursor:pointer}
+@media(max-width:800px){.detail-box{grid-template-columns:1fr}.detail-img{height:240px}.hero{flex-direction:column}.hero-img{width:100%}}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="logo"><div class="logo-icon">FH</div> FoodHub</div>
+<div class="nav"><span class="active" onclick="filterType('ALL')">All</span><span onclick="filterType('VEG')">Veg</span><span onclick="filterType('NON_VEG')">Non-Veg</span><span onclick="filterType('BIRYANI')">Biryani</span><span onclick="filterType('FASTFOOD')">FastFood</span></div>
+<div class="search"><input id="searchCity" placeholder="Search city / restaurant..." onkeypress="if(event.key==='Enter')searchCity()"><button onclick="searchCity()">Search</button></div>
+<div class="auth" id="authArea"><button onclick="showLogin()">Sign In</button></div>
+</div>
+
+<div class="hero">
+<div class="hero-left">
+<h1>Find Your Favorite Food With <span>Zero Delivery Fee</span></h1>
+<p>Direct from verified restaurants – No commission – Fresh & fast delivery from Razole, Hyderabad, Bangalore</p>
+<div class="pills" id="pills"><span class="active" onclick="filterType('ALL')">All Foods</span><span onclick="filterType('VEG')">Veg</span><span onclick="filterType('NON_VEG')">Non-Veg</span><span onclick="filterType('BIRYANI')">Biryani</span><span onclick="filterType('FASTFOOD')">FastFood</span><span onclick="filterType('DESSERT')">Desserts</span></div>
+</div>
+<img class="hero-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600" alt="food">
+</div>
+
+<div class="bar"><div id="statusText">Guest browsing • Sign in as Restaurant to add food • Click any dish to order • <strong id="count">3</strong> foods</div><button class="add-btn" id="addBtn" onclick="showAdd()" style="display:none">+ Add Food</button></div>
+
+<div class="wrap"><div class="grid" id="grid"></div></div>
+
+<div class="cart-bar" id="cartBar" onclick="alert('Cart: '+cart.length+' items\nTotal: ₹'+cartTotal)">🛒 <span id="cartCount">0</span> items • ₹<span id="cartTotal">0</span> • Checkout</div>
+
+<div class="modal" id="authModal"><div class="box"><h2>Welcome to FoodHub</h2><p>Sign in as ADMIN / OWNER / CUSTOMER – ADMIN full, OWNER restaurant, CUSTOMER order</p><input id="lUser" placeholder="Username (admin / owner / customer)"><input id="lPass" type="password" placeholder="Password"><select id="lRole"><option value="CUSTOMER">CUSTOMER</option><option value="OWNER">OWNER</option><option value="ADMIN">ADMIN</option></select><button class="btn btn-black" onclick="login()">Sign In</button><button class="btn btn-white" onclick="register()">Create Account</button><button class="btn btn-white" onclick="closeAuth()">Cancel</button><p style="margin-top:10px;background:#fef9c3;padding:8px;border-radius:8px">Demo: admin/admin123 ADMIN, owner/owner123 OWNER</p></div></div>
+
+<div class="modal" id="addModal"><div class="box"><h2>Add New Food</h2><p>Only OWNER & ADMIN can add dishes</p><input id="aTitle" placeholder="Title * (Hyderabad Dum Biryani)"><input id="aCity" placeholder="City * (Hyderabad)"><select id="aType"><option value="BIRYANI">BIRYANI</option><option value="VEG">VEG</option><option value="NON_VEG">NON_VEG</option><option value="FASTFOOD">FASTFOOD</option><option value="DESSERT">DESSERT</option></select><input id="aPrice" type="number" placeholder="Price * (299)"><input id="aRest" placeholder="Restaurant Name (Paradise)"><input id="aImage" placeholder="Image URL https://images.unsplash.com/..."><textarea id="aDesc" placeholder="Description * (Dum biryani with... )"></textarea><button class="btn btn-black" onclick="addFood()">Publish Food</button><button class="btn btn-white" onclick="closeAdd()">Cancel</button></div></div>
+
+<div class="modal" id="editModal"><div class="box"><h2>Edit Food</h2><input id="eTitle"><input id="eCity"><select id="eType"><option value="BIRYANI">BIRYANI</option><option value="VEG">VEG</option><option value="NON_VEG">NON_VEG</option><option value="FASTFOOD">FASTFOOD</option><option value="DESSERT">DESSERT</option></select><input id="ePrice" type="number"><input id="eRest"><input id="eImage"><textarea id="eDesc"></textarea><button class="btn btn-black" onclick="saveEdit()">Save Changes</button><button class="btn btn-white" onclick="closeEdit()">Cancel</button></div></div>
+
+<div class="modal" id="detailModal"><div class="detail-box"><img id="dImg" class="detail-img" src=""><div class="detail-content"><div style="display:flex;justify-content:space-between;align-items:center"><span id="dType" class="tag"></span><button onclick="closeDetail()" style="border:none;background:#fff;padding:6px 12px;border-radius:20px;cursor:pointer">✕</button></div><h3 id="dTitle"></h3><div id="dMeta" class="dmeta"></div><div id="dPrice" class="dprice"></div><div id="dRest" class="dmeta"></div><div id="dDesc" class="ddesc"></div><div class="owner-box"><h4>👨‍🍳 Restaurant Details (OWNER Click Feature)</h4><div id="dOwner"></div><div style="font-size:10px;color:#94a3b8;margin-top:6px">ADMIN can edit/delete ANY • OWNER can edit/delete OWN • CUSTOMER can only order</div></div><button onclick="contactOwner()" style="width:100%;margin-top:10px;padding:12px;background:#111827;color:#fff;border:none;border-radius:10px;font-weight:700;font-size:11px;cursor:pointer">📞 Contact Restaurant / Order</button><button onclick="addToCart()" style="width:100%;margin-top:6px;padding:12px;background:#ff6b00;color:#fff;border:none;border-radius:10px;font-weight:700;font-size:11px;cursor:pointer">🛒 Add to Cart</button><div id="editDeleteRow" style="display:none" class="action-row"><button onclick="openEditFromDetail()" style="padding:10px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;font-weight:700;font-size:11px;cursor:pointer">✏️ Edit</button><button onclick="deleteFromDetail()" style="padding:10px;background:#ef4444;color:#fff;border:none;border-radius:10px;font-weight:700;font-size:11px;cursor:pointer">🗑️ Delete</button></div></div></div></div>
+
+<script>
+const API='/api';
+let allFoods=[],currentUser=null,selectedFood=null,curFilter='ALL',cart=[],cartTotal=0;
+function getToken(){return localStorage.getItem('token')}
+function updateAuthUI(){
+ const area=document.getElementById('authArea');const addBtn=document.getElementById('addBtn');
+ if(currentUser){area.innerHTML=`<span class="pill" style="background:#111827;color:#fff;padding:8px 14px;border-radius:20px;font-size:12px">${currentUser.username} • ${currentUser.role}</span> <button onclick="logout()" style="margin-left:6px">Logout</button>`;document.getElementById('statusText').innerHTML=`Welcome ${currentUser.username} • ${currentUser.role} account active • Click any dish to order • <strong id="count">${allFoods.length}</strong> foods`; if(currentUser.role==='ADMIN'||currentUser.role==='OWNER') addBtn.style.display='block'; else addBtn.style.display='none';
+ }else{area.innerHTML=`<button onclick="showLogin()">Sign In</button>`;document.getElementById('statusText').innerHTML=`Guest browsing • Sign in as Restaurant to add food • Click any dish to order • <strong id="count">${allFoods.length}</strong> foods`;addBtn.style.display='none';}
+}
+function showLogin(){document.getElementById('authModal').classList.add('show')}function closeAuth(){document.getElementById('authModal').classList.remove('show')}
+function showAdd(){if(!currentUser||(currentUser.role!=='ADMIN'&&currentUser.role!=='OWNER')){alert('Only ADMIN/OWNER can add');showLogin();return}document.getElementById('addModal').classList.add('show')}function closeAdd(){document.getElementById('addModal').classList.remove('show')}
+function closeDetail(){document.getElementById('detailModal').classList.remove('show')}function closeEdit(){document.getElementById('editModal').classList.remove('show')}
+async function login(){const u=document.getElementById('lUser').value,p=document.getElementById('lPass').value;if(!u||!p){alert('Enter username password');return}const r=await fetch(API+'/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});const d=await r.json();if(!r.ok){alert(d.message||'Login failed');return}localStorage.setItem('token',d.token);localStorage.setItem('user',JSON.stringify(d));currentUser=d;updateAuthUI();closeAuth();loadFoods()}
+async function register(){const u=document.getElementById('lUser').value,p=document.getElementById('lPass').value,role=document.getElementById('lRole').value;if(!u||!p){alert('Enter username password');return}const r=await fetch(API+'/auth/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p,role})});const d=await r.json();if(!r.ok){alert(d.message||'Register failed');return}alert('Account created! Now Sign In with same credentials');}
+function logout(){localStorage.clear();currentUser=null;updateAuthUI();loadFoods()}
+async function loadFoods(){const r=await fetch(API+'/foods');allFoods=await r.json();apply()}
+function apply(){let f=[...allFoods];const city=document.getElementById('searchCity').value.toLowerCase().trim();if(city){f=f.filter(x=>(x.city&&x.city.toLowerCase().includes(city))||(x.restaurantName&&x.restaurantName.toLowerCase().includes(city))||(x.title&&x.title.toLowerCase().includes(city)))}if(curFilter!=='ALL'){f=f.filter(x=>x.type===curFilter)}render(f)}
+function filterType(t){curFilter=t;document.querySelectorAll('.pills span').forEach(s=>s.classList.toggle('active',s.innerText.toUpperCase().includes(t)||(t==='ALL'&&s.innerText.includes('All'))));apply()}
+function searchCity(){apply()}
+function render(list){const grid=document.getElementById('grid');document.getElementById('count').innerText=list.length;grid.innerHTML=list.map(p=>{const canDel=currentUser&&(currentUser.role==='ADMIN'||currentUser.role==='OWNER');return `<div class="card" onclick="openDetail(${p.id})"><div style="position:relative"><img class="card-img" src="${p.imageUrl||'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600'}" alt=""><div class="card-top"><span class="tag">${p.type} • VERIFIED</span>${canDel?`<span class="del" onclick="quickDelete(event,${p.id})">Delete</span>`:''}</div><span class="price">₹${p.price}</span></div><div class="card-body"><h3>${p.title}</h3><div class="meta">📍 ${p.city} • ${p.restaurantName||'Direct Restaurant'} • Click to order</div><div class="desc">${p.description||''}</div></div></div>`}).join('')}
+async function addFood(){const title=document.getElementById('aTitle').value,city=document.getElementById('aCity').value,type=document.getElementById('aType').value,price=parseFloat(document.getElementById('aPrice').value),restaurantName=document.getElementById('aRest').value,imageUrl=document.getElementById('aImage').value,description=document.getElementById('aDesc').value;if(!title||!city||!price){alert('Title City Price required');return}const body={title,city,type,price,imageUrl,description,restaurantName,ownerId:currentUser.id};const r=await fetch(API+'/foods',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+getToken()},body:JSON.stringify(body)});const d=await r.json();if(!r.ok){alert(d.message||'Add failed');return}alert('Food Published!');closeAdd();loadFoods()}
+function openDetail(id){const p=allFoods.find(x=>x.id===id);if(!p)return;selectedFood=p;document.getElementById('dImg').src=p.imageUrl||'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600';document.getElementById('dType').innerText=p.type+' • VERIFIED';document.getElementById('dTitle').innerText=p.title;document.getElementById('dMeta').innerText=`📍 ${p.city} • Direct from Restaurant • ID: ${p.id} • OwnerID: ${p.ownerId||p.owner?.id||'1'}`;document.getElementById('dPrice').innerText='₹ '+p.price.toLocaleString('en-IN');document.getElementById('dRest').innerText='🍽️ '+(p.restaurantName||'Direct Restaurant');document.getElementById('dDesc').innerText=p.description||'';document.getElementById('dOwner').innerText=`Owner: ${p.owner?.username||'verified_restaurant'} • Verified • Direct Contact - No Commission • City: ${p.city}`;const canEdit=currentUser&&(currentUser.role==='ADMIN'||currentUser.role==='OWNER');document.getElementById('editDeleteRow').style.display=canEdit?'grid':'none';document.getElementById('detailModal').classList.add('show')}
+function contactOwner(){if(!currentUser){alert(`Please Sign In to order ${selectedFood.title}\nRestaurant: ${selectedFood.restaurantName}\nCity: ${selectedFood.city}\nIn real app: Phone, WhatsApp shown`);showLogin();return}alert(`📞 Contact Restaurant for: ${selectedFood.title}\n\nRestaurant: ${selectedFood.restaurantName||'verified_restaurant'}\nPhone: +91 9XXXX XXXXX (Direct)\nCity: ${selectedFood.city}\nPrice: ₹ ${selectedFood.price}\n\nIn production: Chat, Call, WhatsApp order here!\n\nLogged in as: ${currentUser.username} (${currentUser.role})`)}
+function addToCart(){if(!selectedFood)return;cart.push(selectedFood);cartTotal+=selectedFood.price;document.getElementById('cartCount').innerText=cart.length;document.getElementById('cartTotal').innerText=cartTotal;document.getElementById('cartBar').style.display='block';alert(`Added ${selectedFood.title} to cart!\nTotal items: ${cart.length}\nTotal: ₹${cartTotal}`)}
+function openEditFromDetail(){if(!selectedFood)return;document.getElementById('eTitle').value=selectedFood.title;document.getElementById('eCity').value=selectedFood.city;document.getElementById('eType').value=selectedFood.type;document.getElementById('ePrice').value=selectedFood.price;document.getElementById('eRest').value=selectedFood.restaurantName||'';document.getElementById('eImage').value=selectedFood.imageUrl||'';document.getElementById('eDesc').value=selectedFood.description||'';closeDetail();document.getElementById('editModal').classList.add('show')}
+async function saveEdit(){const body={title:document.getElementById('eTitle').value,city:document.getElementById('eCity').value,type:document.getElementById('eType').value,price:parseFloat(document.getElementById('ePrice').value),restaurantName:document.getElementById('eRest').value,imageUrl:document.getElementById('eImage').value,description:document.getElementById('eDesc').value};const r=await fetch(API+'/foods/'+selectedFood.id,{method:'PUT',headers:{'Content-Type':'application/json','Authorization':'Bearer '+getToken()},body:JSON.stringify(body)});if(!r.ok){const d=await r.json();alert(d.message||'Edit failed');return}alert('Updated!');closeEdit();loadFoods()}
+async function quickDelete(e,id){e.stopPropagation();if(!confirm('Delete this food?'))return;await doDelete(id)}
+async function deleteFromDetail(){if(!confirm('Delete '+selectedFood.title+'?'))return;await doDelete(selectedFood.id);closeDetail()}
+async function doDelete(id){const r=await fetch(API+'/foods/'+id,{method:'DELETE',headers:{'Authorization':'Bearer '+getToken()}});if(!r.ok){alert('Delete failed');return}loadFoods()}
+window.onload=()=>{const u=localStorage.getItem('user');if(u){try{currentUser=JSON.parse(u);updateAuthUI()}catch(e){}}loadFoods()}
+</script>
+</body>
+</html>
