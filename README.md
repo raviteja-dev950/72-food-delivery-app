@@ -206,7 +206,7 @@ DataLoader adds 3 users if count<10 deleteAll – admin ADMIN, owner OWNER, ravi
 ## 👨💻 Author
 ### Vemula Leela Venkata Ravi Teja
 
-Java Full Stack Developer – Razole, Andhra Pradesh
+Java Full Stack Developer – Andhra Pradesh
 
 100 Java Full Stack Projects Challenge – 72 / 100 Completed – FoodHub V2 – Zero Delivery Fee
 
